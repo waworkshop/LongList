@@ -1,0 +1,17 @@
+﻿<Application
+    x:Class="LongList.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LongList"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <local:DataTemplates/>
+            </ResourceDictionary.MergedDictionaries>
+            <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+            <SolidColorBrush x:Key="SentMessageBackground" Color="#ffaa1428"/>
+            <SolidColorBrush x:Key="ReceivedMessageBackground" Color="Crimson"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

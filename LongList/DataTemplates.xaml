@@ -1,0 +1,198 @@
+﻿<ResourceDictionary
+    x:Class="LongList.DataTemplates"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LongList">
+    <DataTemplate x:Key="DefaultTextMessageTemplate" x:DataType="local:Message">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Polygon
+                Grid.Row="0"
+                Points="0,0 0,18 18,18"
+                Fill="{StaticResource ReceivedMessageBackground}"
+                Visibility="{x:Bind IsReceived, Converter={StaticResource BoolToVisibilityConverter}}"
+                Margin="10,0,10,0"/>
+
+            <Grid
+                Grid.Row="1"
+                Background="{StaticResource ReceivedMessageBackground}"
+                Visibility="{x:Bind IsReceived, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+            <Grid
+                Grid.Row="1"
+                Background="{StaticResource SentMessageBackground}"
+                Visibility="{x:Bind IsSent, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <local:WaRichTextBlock
+                    Text="{x:Bind Description}"
+                    MinWidth="150"
+                    MaxWidth="400"
+                    FontSize="20"
+                    Foreground="White"
+                    Padding="10,10,5,0" />
+
+                <TextBlock
+                    Grid.Row="1"
+                    FontSize="12"
+                    Text="{x:Bind DisplayTime}"
+                    Foreground="White"
+                    TextWrapping="Wrap"
+                    Opacity="0.7"
+                    Padding="10" />
+            </Grid>
+
+            <Polygon
+                Grid.Row="2"
+                HorizontalAlignment="Right"
+                Points="0,0 18,0 18,18"
+                Fill="{StaticResource SentMessageBackground}"
+                Visibility="{x:Bind IsSent, Converter={StaticResource BoolToVisibilityConverter}}"
+                Margin="0,0,10,0"/>
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="ImageMessageTemplate" x:DataType="local:Message">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Polygon
+                Grid.Row="0"
+                Points="0,0 0,18 18,18"
+                Fill="{StaticResource ReceivedMessageBackground}"
+                Visibility="{x:Bind IsReceived, Converter={StaticResource BoolToVisibilityConverter}}"
+                Margin="10,0,10,0"/>
+
+            <Grid
+                Grid.Row="1"
+                Background="{StaticResource ReceivedMessageBackground}"
+                Visibility="{x:Bind IsReceived, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+            <Grid
+                Grid.Row="1"
+                Background="{StaticResource SentMessageBackground}"
+                Visibility="{x:Bind IsSent, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <local:WaImage
+                    Message="{x:Bind}"/>
+
+                <local:WaRichTextBlock
+                    x:Phase="0"
+                    Grid.Row="1"
+                    Text="{x:Bind Description}"
+                    Foreground="White"
+                    MinWidth="150"
+                    MaxWidth="400"
+                    FontSize="20"
+                    Padding="10,10,5,0" />
+
+                <TextBlock
+                    x:Phase="1"
+                    Grid.Row="2"
+                    FontSize="12"
+                    Text="{x:Bind DisplayTime}"
+                    Foreground="White"
+                    TextWrapping="Wrap"
+                    Opacity="0.7"
+                    Padding="10" />
+            </Grid>
+
+            <Polygon
+                Grid.Row="2"
+                HorizontalAlignment="Right"
+                Points="0,0 18,0 18,18"
+                Fill="{StaticResource SentMessageBackground}"
+                Visibility="{x:Bind IsSent, Converter={StaticResource BoolToVisibilityConverter}}"
+                Margin="0,0,10,0"/>
+        </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="InlineVideoMessageTemplate" x:DataType="local:Message">
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Polygon
+                Grid.Row="0"
+                Points="0,0 0,18 18,18"
+                Fill="{StaticResource ReceivedMessageBackground}"
+                Visibility="{x:Bind IsReceived, Converter={StaticResource BoolToVisibilityConverter}}"
+                Margin="10,0,10,0"/>
+
+            <Grid
+                Grid.Row="1"
+                Background="{StaticResource ReceivedMessageBackground}"
+                Visibility="{x:Bind IsReceived, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+            <Grid
+                Grid.Row="1"
+                Background="{StaticResource SentMessageBackground}"
+                Visibility="{x:Bind IsSent, Converter={StaticResource BoolToVisibilityConverter}}"/>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <MediaElement 
+                    Source="ms-appx://LongList/Assets/video.mp4" 
+                    Width="200"
+                    AutoPlay="True"
+                    IsLooping="True"
+                    AreTransportControlsEnabled="False" />
+                
+                <local:WaRichTextBlock
+                    x:Phase="0"
+                    Grid.Row="1"
+                    Text="{x:Bind Description}"
+                    Foreground="White"
+                    MinWidth="150"
+                    MaxWidth="400"
+                    FontSize="20"
+                    Padding="10,10,5,0" />
+
+                <TextBlock
+                    x:Phase="1"
+                    Grid.Row="2"
+                    FontSize="12"
+                    Text="{x:Bind DisplayTime}"
+                    Foreground="White"
+                    TextWrapping="Wrap"
+                    Opacity="0.7"
+                    Padding="10" />
+            </Grid>
+
+            <Polygon
+                Grid.Row="2"
+                HorizontalAlignment="Right"
+                Points="0,0 18,0 18,18"
+                Fill="{StaticResource SentMessageBackground}"
+                Visibility="{x:Bind IsSent, Converter={StaticResource BoolToVisibilityConverter}}"
+                Margin="0,0,10,0"/>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>
